@@ -20,15 +20,14 @@ public class EstadoSeleccionPersonaje implements  Estado{
         tipo = tipoEstado.SELECCIONAR_PERSONAJE;
 
         seleccionPersonaje = new Texture[8];
-        seleccionPersonaje[0] = new Texture(Gdx.files.internal("personaje1.jpeg"));
-        seleccionPersonaje[1] = new Texture(Gdx.files.internal("personaje2.jpeg"));
-        seleccionPersonaje[2] = new Texture(Gdx.files.internal("personaje3.jpeg"));
-        seleccionPersonaje[3] = new Texture(Gdx.files.internal("personaje4.jpeg"));
-        seleccionPersonaje[4] = new Texture(Gdx.files.internal("personaje5.jpg"));
-        seleccionPersonaje[5] = new Texture(Gdx.files.internal("personaje6.jpeg"));
-        seleccionPersonaje[6] = new Texture(Gdx.files.internal("personaje7.jpeg"));
-        seleccionPersonaje[7] = new Texture(Gdx.files.internal("personaje8.jpeg"));
-
+        seleccionPersonaje[0] = new Texture(Gdx.files.internal("personaje5.jpg"));
+        seleccionPersonaje[1] = new Texture(Gdx.files.internal("personaje6.jpeg"));
+        seleccionPersonaje[2] = new Texture(Gdx.files.internal("personaje7.jpeg"));
+        seleccionPersonaje[3] = new Texture(Gdx.files.internal("personaje8.jpeg"));
+        seleccionPersonaje[4] = new Texture(Gdx.files.internal("personaje1.jpeg"));
+        seleccionPersonaje[5] = new Texture(Gdx.files.internal("personaje2.jpeg"));
+        seleccionPersonaje[6] = new Texture(Gdx.files.internal("personaje3.jpeg"));
+        seleccionPersonaje[7] = new Texture(Gdx.files.internal("personaje4.jpeg"));
         personajeSeleccionadoIndex = 4;
     }
 

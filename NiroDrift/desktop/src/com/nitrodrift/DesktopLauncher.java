@@ -16,4 +16,3 @@ public class DesktopLauncher {
 		new Lwjgl3Application(new NitroDrift(), config);
 	}
 }
-
