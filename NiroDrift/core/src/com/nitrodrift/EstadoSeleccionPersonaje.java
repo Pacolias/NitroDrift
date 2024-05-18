@@ -94,7 +94,7 @@ public class EstadoSeleccionPersonaje implements  Estado{
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             // El jugador ha confirmado su selección, puedes cambiar el estado a la siguiente pantalla
             personajeSeleccionadoIndex = 4;
-            game.estadoActual = new EstadoInicio();
+            game.estadoActual = new EstadoInicio(); //TODO: hay que cambiar este nuevo estado a la siguiente selección
         }
 
     }
