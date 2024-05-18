@@ -9,8 +9,7 @@ buildscript {
         google()
     }
     dependencies {
-        // Otras dependencias de tu proyecto
-        implementation "com.badlogicgames.gdx:gdx-box2d:1.12.1"
+
 
     }
 }
@@ -48,8 +47,7 @@ project(":desktop") {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        // Otras dependencias de tu proyecto
-        implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
     }
 }
 
@@ -59,7 +57,7 @@ project(":core") {
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        // Otras dependencias de tu proyecto
-        implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+
     }
 }

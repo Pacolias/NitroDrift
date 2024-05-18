@@ -1,17 +1,17 @@
-package com.nitrodrift;
+/*package com.nitrodrift;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Array;
 
 public class Carrera {
-    private Pista pista;
+    //private Pista pista;
     private Array<Coche> coches;
     private Jugador jugador;
     private OrthographicCamera camera;
 
     public Carrera() {
-        pista = new Pista();
+        //pista = new Pista();
         coches = new Array<>();
         jugador = new Jugador();
 
@@ -53,4 +53,4 @@ public class Carrera {
         batch.end();
     }
 }
-
+*/

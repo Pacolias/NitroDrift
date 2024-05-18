@@ -3,24 +3,29 @@ package com.nitrodrift;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2D;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.Texture;
 
 public class EstadoCarrera  implements  Estado{
     tipoEstado tipo;
-    Carrera carrera;
+    //Carrera carrera;
 
     private Texture fondo;//TODO CAMBIAR
 
-    private Pista pista;
+    //private Pista pista;
     protected static Array<Coche> coches;
     private Jugador jugador;
     private OrthographicCamera camera;
 
     public EstadoCarrera() {
+
+
         tipo = tipoEstado.CARRERA;
         fondo = new Texture("carretera.png");
-        pista = new Pista();
+        //pista = new Pista();
         coches = new Array<>();
         jugador = new Jugador();
 
@@ -75,7 +80,7 @@ public class EstadoCarrera  implements  Estado{
         }
 
         // Llama al método para evitar colisiones entre los coches de la IA
-        evitarColisionesCoches();
+        //evitarColisionesCoches();
 
         // Actualizar la cámara para seguir al jugador
         //camera.position.set(jugador.getX(), jugador.getY(), 0);
@@ -127,10 +132,10 @@ public class EstadoCarrera  implements  Estado{
         game.gestorDeGraficos.end();
     }
 
-    private void evitarColisionesCoches() {
+    /*private void evitarColisionesCoches() {
         for (Coche coche : coches) {
             coche.evitarColisiones(coches);
         }
-    }
+    }*/
 
 }

@@ -1,50 +1,54 @@
 package com.nitrodrift;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 public abstract class Coche {
     protected Texture texture;
-    protected Body body;
+    protected Vector2 position;
+    protected Vector2 velocity;
+
     protected float scale;
 
-    public Coche(World world, String texturePath, float startX, float startY, float scale) {
+    public Coche(String texturePath, float startX, float startY, float scale) {
         texture = new Texture(texturePath);
+        position = new Vector2(startX, startY);
+        velocity = new Vector2(0, 0);
         this.scale = scale;
-
-        // Crear el cuerpo en Box2D
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(startX, startY);
-
-        body = world.createBody(bodyDef);
-
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(texture.getWidth() * scale / 2, texture.getHeight() * scale / 2);
-
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape = shape;
-        fixtureDef.density = 1.0f;
-        fixtureDef.friction = 0.3f;
-        fixtureDef.restitution = 0.5f;
-
-        body.createFixture(fixtureDef);
-        shape.dispose();
     }
 
     public abstract void update(float delta);
 
     public void render(SpriteBatch batch) {
-        batch.draw(texture, body.getPosition().x - (texture.getWidth() * scale / 2), body.getPosition().y - (texture.getHeight() * scale / 2), texture.getWidth() * scale, texture.getHeight() * scale);
+        batch.draw(texture, position.x, position.y, texture.getWidth() * scale, texture.getHeight() * scale);
     }
 
     public void dispose() {
         texture.dispose();
     }
+
+    public void evitarColisiones(Array<Coche> coches) {
+        for (Coche otroCoche : coches) {
+            if (otroCoche != this) {
+                Rectangle thisRect = new Rectangle(this.position.x, this.position.y, this.texture.getWidth() * this.scale, this.texture.getHeight() * this.scale);
+                Rectangle otroRect = new Rectangle(otroCoche.position.x, otroCoche.position.y, otroCoche.texture.getWidth() * otroCoche.scale, otroCoche.texture.getHeight() * otroCoche.scale);
+
+                if (thisRect.overlaps(otroRect)) {
+                    // Calcular la dirección del empuje
+                    float deltaX = otroCoche.position.x - this.position.x;
+                    float deltaY = otroCoche.position.y - this.position.y;
+
+                    // Aplicar el empuje ajustando las posiciones
+                    this.position.x -= deltaX * 0.1f;
+                    this.position.y -= deltaY * 0.1f;
+                    otroCoche.position.x += deltaX * 0.1f;
+                    otroCoche.position.y += deltaY * 0.1f;
+                }
+            }
+        }
+    }
+
 }
