@@ -12,12 +12,13 @@ import com.badlogic.gdx.graphics.Texture;
 public class EstadoSeleccionPersonaje implements  Estado{
     private tipoEstado tipo;
     private Texture[] seleccionPersonaje;
-
+    private Texture fondo;
     private int personajeSeleccionadoIndex;
 
 
     public EstadoSeleccionPersonaje(){
         tipo = tipoEstado.SELECCIONAR_PERSONAJE;
+        //fondo = new Texture("menu_seleccion_personaje.png");
 
         seleccionPersonaje = new Texture[8];
         seleccionPersonaje[0] = new Texture(Gdx.files.internal("personaje5.jpg"));

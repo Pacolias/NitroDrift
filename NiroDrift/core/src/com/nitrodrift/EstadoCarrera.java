@@ -2,18 +2,18 @@ package com.nitrodrift;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2D;
-import com.badlogic.gdx.physics.box2d.World;
+
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.Texture;
 
 public class EstadoCarrera  implements  Estado{
-    tipoEstado tipo;
-    //Carrera carrera;
-
+    private tipoEstado tipo;
     private Texture fondo;//TODO CAMBIAR
+
+    private float countdownTimer = 6; // Tiempo en segundos para la cuenta regresiva
+    private boolean countdownFinished = false;
+    private BitmapFont font; // Necesitas una instancia de BitmapFont para dibujar texto
 
     //private Pista pista;
     protected static Array<Coche> coches;
@@ -21,6 +21,7 @@ public class EstadoCarrera  implements  Estado{
     private OrthographicCamera camera;
 
     public EstadoCarrera() {
+        font = new BitmapFont(); // Inicializa la fuente para dibujar texto
 
 
         tipo = tipoEstado.CARRERA;
@@ -33,7 +34,7 @@ public class EstadoCarrera  implements  Estado{
         coches.add(jugador);
 
         // Añadir algunos coches controlados por IA
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             coches.add(new IA());
         }
 
@@ -43,6 +44,7 @@ public class EstadoCarrera  implements  Estado{
 
     @Override
     public void dibujarEstado(NitroDrift game) {
+
         // Redibujado de la pantalla
         game.camara.update();
         game.gestorDeGraficos.setProjectionMatrix(game.camara.combined);
@@ -58,35 +60,60 @@ public class EstadoCarrera  implements  Estado{
         // Dibujar la textura redimensionada
         game.gestorDeGraficos.draw(fondo, 0, 0, newWidth, newHeight);
 
-        // Dibujar el jugador
-        //TODO jugador.render(game.gestorDeGraficos);
-
         // Actualizar y dibujar cada coche
         for (Coche coche : coches) {
             coche.update(Gdx.graphics.getDeltaTime());
             coche.render(game.gestorDeGraficos);
         }
 
+        if (!countdownFinished) {
+            // Dibuja la cuenta regresiva en la pantalla
+            //game.gestorDeGraficos.begin();
+            font.draw(game.gestorDeGraficos, "Cuenta atrás: " + (int) countdownTimer, 100, 100);
+            //game.gestorDeGraficos.end();
+        }
+
         game.gestorDeGraficos.end();
+
     }
 
     public void update(float delta) {
-        // Actualizar todos los coches
 
-        jugador.update(delta);
+        if (!countdownFinished) {
+            countdownTimer -= delta; // Actualiza el temporizador de la cuenta regresiva
+            if (countdownTimer <= 0) {
+                countdownFinished = true; // Marca la cuenta regresiva como finalizada
+                // Inicia la carrera
+                // ...
+            }
 
-        for (Coche coche : coches) {
-            coche.update(delta);
+        } else {
+            // Actualizar todos los coches
+
+            jugador.update(delta);
+
+            for (Coche coche : coches) {
+                coche.update(delta);
+            }
+
+            // Mover el escenario junto con el jugador si está acelerando
+            if (jugador.isAccelerating()) {
+                moveScenario(-jugador.getAccelerationSpeed() * delta);
+            }
+
+            // Llama al método para evitar colisiones entre los coches de la IA
+            //evitarColisionesCoches();
+
+            // Actualizar la cámara para seguir al jugador
+            //camera.position.set(jugador.getX(), jugador.getY(), 0);
+            //camera.update();
         }
+    }
 
-        // Llama al método para evitar colisiones entre los coches de la IA
-        //evitarColisionesCoches();
-
-        // Actualizar la cámara para seguir al jugador
-        //camera.position.set(jugador.getX(), jugador.getY(), 0);
-        //camera.update();
-
-        // Lógica adicional de la carrera (e.g., detección de final de carrera)
+    private void moveScenario(float distance) {
+        for (Coche coche : coches) {
+            coche.getPosition().y += distance;
+        }
     }
 
     /*

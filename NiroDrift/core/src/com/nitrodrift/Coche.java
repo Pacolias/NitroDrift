@@ -30,6 +30,13 @@ public abstract class Coche {
         texture.dispose();
     }
 
+    // Método para obtener la posición del coche
+    public Vector2 getPosition() {
+        return position;
+    }
+
+
+
     public void evitarColisiones(Array<Coche> coches) {
         for (Coche otroCoche : coches) {
             if (otroCoche != this) {
