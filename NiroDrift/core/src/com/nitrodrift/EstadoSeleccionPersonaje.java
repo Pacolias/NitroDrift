@@ -5,6 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * Hay que tener cuidado luego en todas las clases para lo del redimensionado de las imágenes
+ */
+
 public class EstadoSeleccionPersonaje implements  Estado{
     private tipoEstado tipo;
     private Texture[] seleccionPersonaje;
