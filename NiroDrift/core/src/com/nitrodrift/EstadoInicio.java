@@ -13,6 +13,12 @@ public class EstadoInicio implements  Estado{
         nitroLogo = new Texture("NitroDriftFondoMorado.jpg");
     }
 
+
+    @Override
+    public void update(float delta) {
+
+    }
+
     @Override
     public void dibujarEstado(NitroDrift game) {
         // Redibujado de la pantalla

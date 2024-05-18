@@ -31,6 +31,12 @@ public class EstadoSeleccionPersonaje implements  Estado{
         personajeSeleccionadoIndex = 4;
     }
 
+
+    @Override
+    public void update(float delta) {
+
+    }
+
     @Override
     public void dibujarEstado(NitroDrift game) {
         // Redibujado de la pantalla
@@ -97,8 +103,11 @@ public class EstadoSeleccionPersonaje implements  Estado{
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             // El jugador ha confirmado su selección, puedes cambiar el estado a la siguiente pantalla
             personajeSeleccionadoIndex = 4;
-            game.estadoActual = new EstadoSeleccionVehiculo();
+            game.estadoActual = new EstadoCarrera();//TODO:Cambiar a new EstadoSeleccionVehiculo();
+                                                              // cuando este listo
         }
 
     }
+
+
 }
