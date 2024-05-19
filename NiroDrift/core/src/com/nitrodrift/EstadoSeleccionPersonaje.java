@@ -4,21 +4,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.GL20;
 
-/**
- * Hay que tener cuidado luego en todas las clases para lo del redimensionado de las imágenes
- */
-
-public class EstadoSeleccionPersonaje implements  Estado{
+public class EstadoSeleccionPersonaje implements Estado {
     private tipoEstado tipo;
     private Texture[] seleccionPersonaje;
     private Texture fondo;
     private int personajeSeleccionadoIndex;
+    private NitroDrift game;
 
-
-    public EstadoSeleccionPersonaje(){
+    public EstadoSeleccionPersonaje(NitroDrift game) {
+        this.game = game;
         tipo = tipoEstado.SELECCIONAR_PERSONAJE;
-        //fondo = new Texture("menu_seleccion_personaje.png");
+
+        fondo = new Texture(Gdx.files.internal("NitroDriftFondoMorado.jpg"));
 
         seleccionPersonaje = new Texture[8];
         seleccionPersonaje[0] = new Texture(Gdx.files.internal("personaje5.jpg"));
@@ -32,10 +31,37 @@ public class EstadoSeleccionPersonaje implements  Estado{
         personajeSeleccionadoIndex = 4;
     }
 
-
     @Override
     public void update(float delta) {
-
+        // Manejo de la entrada del jugador para cambiar la selección de personaje
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            if (personajeSeleccionadoIndex == 0 || personajeSeleccionadoIndex == 4) {
+                personajeSeleccionadoIndex += 3;
+            } else {
+                personajeSeleccionadoIndex--;
+            }
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            if (personajeSeleccionadoIndex == 3 || personajeSeleccionadoIndex == 7) {
+                personajeSeleccionadoIndex -= 3;
+            } else {
+                personajeSeleccionadoIndex++;
+            }
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            if (personajeSeleccionadoIndex >= 4) {
+                personajeSeleccionadoIndex -= 4;
+            } else {
+                personajeSeleccionadoIndex += 4;
+            }
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            if (personajeSeleccionadoIndex < 4) {
+                personajeSeleccionadoIndex += 4;
+            } else {
+                personajeSeleccionadoIndex -= 4;
+            }
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            // El jugador ha confirmado su selección, cambiar el estado a la selección de vehículos
+            game.estadoActual = new EstadoSeleccionVehiculo(game);
+        }
     }
 
     @Override
@@ -47,6 +73,11 @@ public class EstadoSeleccionPersonaje implements  Estado{
 
         // Dibujar el fondo de la pantalla de selección de personaje
         Gdx.gl.glClearColor(0, 0, 0, 1); // Color negro
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // Limpiar el buffer de color
+
+        // Dibujar el fondo
+        game.gestorDeGraficos.setColor(Color.WHITE); // Asegurarse de que el color sea blanco para el fondo
+        game.gestorDeGraficos.draw(fondo, 0, 0, game.camara.viewportWidth, game.camara.viewportHeight);
 
         // Calcular las posiciones de los cuadros de selección de personaje
         float cuadroWidth = 150;
@@ -75,40 +106,5 @@ public class EstadoSeleccionPersonaje implements  Estado{
         }
 
         game.gestorDeGraficos.end();
-
-        // Manejo de la entrada del jugador para cambiar la selección de personaje
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            if (personajeSeleccionadoIndex == 0 || personajeSeleccionadoIndex == 4) {
-                personajeSeleccionadoIndex += 3;
-            } else {
-                personajeSeleccionadoIndex--;
-            }
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            if (personajeSeleccionadoIndex == 3 || personajeSeleccionadoIndex == 7) {
-                personajeSeleccionadoIndex -= 3;
-            } else {
-                personajeSeleccionadoIndex++;
-            }
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            if (personajeSeleccionadoIndex >= 4) {
-                personajeSeleccionadoIndex -= 4;
-            } else {
-                personajeSeleccionadoIndex += 4;
-            }
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            if (personajeSeleccionadoIndex < 4) {
-                personajeSeleccionadoIndex += 4;
-            } else {
-                personajeSeleccionadoIndex -= 4;
-            }
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            // El jugador ha confirmado su selección, puedes cambiar el estado a la siguiente pantalla
-            personajeSeleccionadoIndex = 4;
-            game.estadoActual = new EstadoCarrera();//TODO:Cambiar a new EstadoSeleccionVehiculo();
-                                                              // cuando este listo
-        }
-
     }
-
-
 }

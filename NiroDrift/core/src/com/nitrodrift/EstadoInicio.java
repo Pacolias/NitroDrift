@@ -43,7 +43,7 @@ public class EstadoInicio implements  Estado{
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
-            game.estadoActual = new EstadoSeleccionPersonaje();
+            game.estadoActual = new EstadoSeleccionPersonaje(game);
         }
 
     }
