@@ -1,3 +1,4 @@
+/*
 package com.nitrodrift;
 
 import com.badlogic.gdx.Gdx;
@@ -33,18 +34,18 @@ public class IA extends Coche {
 
         // Asegurarse de que el coche IA se mantenga en la pantalla
         if (position.x < 0) position.x = 0;
-        if (position.x > 800 - texture.getWidth() * scale) position.x = 800 - texture.getWidth() * scale;
-        if (position.y < 0) position.y = 600 - texture.getHeight() * scale; // Vuelve a la parte superior de la pantalla
+        if (position.x > 800 - imagen.getWidth() * scale) position.x = 800 - imagen.getWidth() * scale;
+        if (position.y < 0) position.y = 600 - imagen.getHeight() * scale; // Vuelve a la parte superior de la pantalla
 
         // Lógica para mantener el coche dentro de los límites de la pantalla
         if (position.x < 170) position.x = 170; // No permitir que el coche se salga por el lado izquierdo
-        if (position.x > Gdx.graphics.getWidth() - texture.getWidth() * scale - 110) {
-            position.x = Gdx.graphics.getWidth() - texture.getWidth() * scale - 110; // No permitir que el coche se salga por el lado derecho
+        if (position.x > Gdx.graphics.getWidth() - imagen.getWidth() * scale - 110) {
+            position.x = Gdx.graphics.getWidth() - imagen.getWidth() * scale - 110; // No permitir que el coche se salga por el lado derecho
         }
         if (position.y < 0) position.y = 0; // No permitir que el coche se salga por la parte inferior
-        if (position.y > Gdx.graphics.getHeight() - texture.getHeight() * scale) {
-            position.y = Gdx.graphics.getHeight() - texture.getHeight() * scale; // No permitir que el coche se salga por la parte superior
+        if (position.y > Gdx.graphics.getHeight() - imagen.getHeight() * scale) {
+            position.y = Gdx.graphics.getHeight() - imagen.getHeight() * scale; // No permitir que el coche se salga por la parte superior
         }
     }
 
-}
+}*/

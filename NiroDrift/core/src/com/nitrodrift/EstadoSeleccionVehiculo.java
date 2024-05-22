@@ -17,7 +17,7 @@ public class EstadoSeleccionVehiculo implements Estado {
         this.game = game;
         tipo = tipoEstado.SELECCIONAR_CIRCUITO;
         
-        fondo = new Texture(Gdx.files.internal("NitroDriftFondoMorado.jpg"));
+        fondo = game.carrera.getPersonaje().getImagen();
         
         seleccionVehiculo = new Texture[8];
         seleccionVehiculo[0] = new Texture(Gdx.files.internal("codebreaker.jpeg"));
@@ -60,7 +60,10 @@ public class EstadoSeleccionVehiculo implements Estado {
             }
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             // El jugador ha confirmado su selección, cambiar el estado a la carrera
-            vehiculoSeleccionadoIndex = 4;
+            //vehiculoSeleccionadoIndex = 4;
+            EstadisticasVehiculo e = new EstadisticasVehiculo(10, 2, 30);
+            Jugador v = new Jugador(vehiculoSeleccionadoIndex, "Nombre", "Historia", 150000, seleccionVehiculo[vehiculoSeleccionadoIndex],0, 0, 0.015f, e);
+            game.carrera.setVehiculoDelJugador(v);
             game.estadoActual = new EstadoSeleccionCircuito(game);
         }
     }

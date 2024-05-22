@@ -1,56 +1,75 @@
-/*package com.nitrodrift;
+package com.nitrodrift;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Array;
 
 public class Carrera {
-    //private Pista pista;
-    private Array<Coche> coches;
+    private Circuito circuito;
+    private Array<Vehiculo> vehículos;
+    private Vehiculo vehiculoDelJugador;
     private Jugador jugador;
+    private Personaje personaje;
     private OrthographicCamera camera;
 
-    public Carrera() {
-        //pista = new Pista();
-        coches = new Array<>();
+    public Carrera(){
+
+    }
+    public Carrera(Personaje p, Vehiculo c, Circuito cir) {
+        this.circuito = cir;
+        vehículos = new Array<>();
+        vehiculoDelJugador = c;
         jugador = new Jugador();
+        this.personaje = p;
 
-        // Añadir el jugador a la lista de coches
-        coches.add(jugador);
-
-        // Añadir algunos coches controlados por IA
-        for (int i = 0; i < 5; i++) {
-            coches.add(new IA());
-        }
-
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 600);  // Ajustar según tu resolución deseada
     }
 
-    public void update(float delta) {
-        // Actualizar todos los coches
-        for (Coche coche : coches) {
-            coche.update(delta);
-        }
-
-        // Actualizar la cámara para seguir al jugador
-        //camera.position.set(jugador.getX(), jugador.getY(), 0);
-        //camera.update();
-
-        // Lógica adicional de la carrera (e.g., detección de final de carrera)
+    public Circuito getCircuito() {
+        return circuito;
     }
 
-    public void render(SpriteBatch batch) {
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
+    public void setCircuito(Circuito circuito) {
+        this.circuito = circuito;
+    }
 
-        pista.render(batch);
+    public Array<Vehiculo> getVehículos() {
+        return vehículos;
+    }
 
-        for (Coche coche : coches) {
-            coche.render(batch);
-        }
+    public void setVehículos(Array<Vehiculo> vehículos) {
+        this.vehículos = vehículos;
+    }
 
-        batch.end();
+    public Vehiculo getVehiculoDelJugador() {
+        return vehiculoDelJugador;
+    }
+
+    public void setVehiculoDelJugador(Vehiculo vehiculoDelJugador) {
+        this.vehiculoDelJugador = vehiculoDelJugador;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    public Personaje getPersonaje() {
+        return personaje;
+    }
+
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
+    }
+
+    public OrthographicCamera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(OrthographicCamera camera) {
+        this.camera = camera;
     }
 }
-*/
+

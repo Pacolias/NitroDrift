@@ -1,104 +1,75 @@
 package com.nitrodrift;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 
-/**
- * Creo que aquí debería ir el dibujarVehiculo y también los controles
- */
-
-public class Vehiculo {
+public abstract class Vehiculo {
     private int ID;
     private String nombre;
     private String descripcion;
     private int precio;
-
-    private Texture imagen;
     private EstadisticasVehiculo estadisticas;
 
-    /**
-     * Constructor de la clase
-     * @param id int que será el identificador del vehículo
-     * @param nom String que indicará el nombre del vehículo
-     * @param desc String que describirá brevemente la historia del vehículo
-     * @param p int que reflejará el precio en tokens del vehículo
-     * @param im Texture que representa la imagen del vehiculo
-     * @param e Instancia de la clase EstadísticasVehiculo que serán las estadísticas de este vehículo
-     */
-    public Vehiculo(int id, String nom, String desc, int p, Texture im, EstadisticasVehiculo e){
+    protected Texture imagen;
+    protected Vector2 position;
+
+    protected float scale;
+
+    public Vehiculo(int id, String nom, String desc, int p, Texture texture, float startX, float startY, float scale, EstadisticasVehiculo e) {
+        Texture tex = new Texture("jugador.png");
+        this.imagen = tex;
+        this.position = new Vector2(startX, startY);
+        this.scale = scale;
         this.ID = id;
         this.descripcion = desc;
-        this.imagen = im;
         this.nombre = nom;
         this.precio = p;
         this.estadisticas = e;
     }
 
-    /**
-     * Constructor secundario del vehículo
-     * @param id int que será el identificador del vehículo
-     * @param n String que indicará el nombre del vehículo
-     * @param d String que describirá brevemente la historia del vehículo
-     * @param p int que reflejará el precio en tokens del vehículo
-     * @param di String que será la ruta de la imagen para crear la textura del vehículo
-     * @param vm float que será la velocidad máxima que alcanzará el vehículo
-     * @param a float que será la aceleración del vehículo
-     * @param c float que será la cantidad de choques máximos del vehículo
-     */
-    public Vehiculo (int id, String n, String d, int p, String di, float vm, float a, int c){
-        this.ID = id;
-        this.nombre = n;
-        this.descripcion = d;
-        this.precio = p;
-        this.imagen = new Texture(di);
-        this.estadisticas = new EstadisticasVehiculo(vm, a, c);
+    public Vehiculo(){
+
     }
 
-    //Getters and setters
-    public int getID() {
-        return ID;
+    public abstract void update(float delta);
+
+    public void render(SpriteBatch batch) {
+        batch.draw(imagen, position.x, position.y, imagen.getWidth() * scale, imagen.getHeight() * scale);
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void dispose() {
+        imagen.dispose();
     }
 
-    public String getNombre() {
-        return nombre;
+    // Método para obtener la posición del coche
+    public Vector2 getPosition() {
+        return position;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    /*public void evitarColisiones(Array<Coche> coches) {
+        for (Coche otroCoche : coches) {
+            if (otroCoche != this) {
+                Rectangle thisRect = new Rectangle(this.position.x, this.position.y, this.texture.getWidth() * this.scale, this.texture.getHeight() * this.scale);
+                Rectangle otroRect = new Rectangle(otroCoche.position.x, otroCoche.position.y, otroCoche.texture.getWidth() * otroCoche.scale, otroCoche.texture.getHeight() * otroCoche.scale);
 
-    public int getPrecio() {
-        return precio;
-    }
+                if (thisRect.overlaps(otroRect)) {
+                    // Calcular la dirección del empuje
+                    float deltaX = otroCoche.position.x - this.position.x;
+                    float deltaY = otroCoche.position.y - this.position.y;
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
+                    // Aplicar el empuje ajustando las posiciones
+                    this.position.x -= deltaX * 0.1f;
+                    this.position.y -= deltaY * 0.1f;
+                    otroCoche.position.x += deltaX * 0.1f;
+                    otroCoche.position.y += deltaY * 0.1f;
+                }
+            }
+        }
+    }*/
 
-    public Texture getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(Texture imagen) {
-        this.imagen = imagen;
-    }
-
-    public EstadisticasVehiculo getEstadisticas() {
-        return estadisticas;
-    }
-
-    public void setEstadisticas(EstadisticasVehiculo estadisticas) {
-        this.estadisticas = estadisticas;
-    }
 }

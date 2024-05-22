@@ -5,6 +5,8 @@ public class Personaje {
     private String nombre;
     private Texture imagen;
 
+
+
     /**
      * Constructor de la clase
      * @param ID un integer que servirá de identificador

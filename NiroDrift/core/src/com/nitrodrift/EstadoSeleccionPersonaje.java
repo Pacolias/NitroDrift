@@ -60,6 +60,8 @@ public class EstadoSeleccionPersonaje implements Estado {
             }
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             // El jugador ha confirmado su selección, cambiar el estado a la selección de vehículos
+            Personaje p = new Personaje(personajeSeleccionadoIndex,"nombrePersonaje", seleccionPersonaje[personajeSeleccionadoIndex] );
+            game.carrera.setPersonaje(p);
             game.estadoActual = new EstadoSeleccionVehiculo(game);
         }
     }

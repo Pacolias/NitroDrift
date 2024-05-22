@@ -17,7 +17,7 @@ public class EstadoSeleccionCircuito implements Estado{
         this.game = game;
         tipo = tipoEstado.SELECCIONAR_CIRCUITO;
         
-        fondo = new Texture(Gdx.files.internal("NitroDriftFondoMorado.jpg"));
+        fondo = game.carrera.getPersonaje().getImagen();
 
         seleccionCircuito = new Texture[2];
         seleccionCircuito[0] = new Texture(Gdx.files.internal("circuito1.jpg"));
@@ -37,7 +37,9 @@ public class EstadoSeleccionCircuito implements Estado{
                 circuitoSeleccionadoIndex++;
             }
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.estadoActual = new EstadoCarrera();
+            Circuito c = new Circuito(circuitoSeleccionadoIndex, "NombreCircuito", 1000, seleccionCircuito[circuitoSeleccionadoIndex]);
+            game.carrera.setCircuito(c);
+            game.estadoActual = new EstadoCarrera(game);
         }
     }
 

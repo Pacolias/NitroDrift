@@ -42,7 +42,7 @@ public class EstadoInicio implements  Estado{
         // Manejo del clic para cambiar al estado de selección de personaje
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.estadoActual = new EstadoSeleccionPersonaje(game);
         }
 
