@@ -1,14 +1,21 @@
 package com.nitrodrift;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Jugador extends Vehiculo {
+    Texture izquierda;
+    Texture derecha;
+    Texture abajo;
+    Texture arriba;
 
     public Jugador(int id, String nom, String desc, int p, Texture texture, float startX, float startY, float scale, EstadisticasVehiculo e) {
         super(id, nom, desc, p, texture, startX, startY, scale, e); // Asegúrate de tener la textura del jugador
+        izquierda = new Texture("jugadorIzquierda.png");
+        derecha = new Texture("jugadorDerecha.png");
+        arriba = new Texture("jugador.png");
+        abajo = new Texture("jugadorAbajo.png");
     }
 
     public Jugador(){
@@ -19,28 +26,26 @@ public class Jugador extends Vehiculo {
     public void update(float delta) {
         // Actualizar la posición del jugador basado en la entrada del usuario
         if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-            super.imagen = new Texture("jugadorIzquierda.png");
+            super.imagen = izquierda;
             position.x -= 200 * delta;
         }
         if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            super.imagen = new Texture("jugadorDerecha.png");
+            super.imagen = derecha;
             position.x += 200 * delta;
         }
         if (Gdx.input.isKeyPressed(Keys.UP)) {
-            super.imagen = new Texture("jugador.png");
+            super.imagen = arriba;
             position.y += 200 * delta;
         }
         if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-            super.imagen = new Texture("jugadorAbajo.png");
+            super.imagen = abajo;
             position.y -= 200 * delta;
         }
 
-
-
         // Lógica para mantener el coche dentro de los límites de la pantalla
-        if (position.x < 170) position.x = 170; // No permitir que el coche se salga por el lado izquierdo
-        if (position.x > Gdx.graphics.getWidth() - imagen.getWidth() * scale - 110) {
-            position.x = Gdx.graphics.getWidth() - imagen.getWidth() * scale - 110; // No permitir que el coche se salga por el lado derecho
+        if (position.x < 0) position.x = 0; // No permitir que el coche se salga por el lado izquierdo
+        if (position.x > Gdx.graphics.getWidth() - imagen.getWidth() * scale) {
+            position.x = Gdx.graphics.getWidth() - imagen.getWidth() * scale ; // No permitir que el coche se salga por el lado derecho
         }
         if (position.y < 0) position.y = 0; // No permitir que el coche se salga por la parte inferior
         if (position.y > Gdx.graphics.getHeight() - imagen.getHeight() * scale) {
@@ -49,14 +54,10 @@ public class Jugador extends Vehiculo {
     }
 
     public boolean isAccelerating() {
-        // Aquí puedes agregar la lógica para determinar si el jugador está acelerando
-        // Por ejemplo, puedes verificar si se están presionando las teclas de aceleración (arriba) o cualquier otra condición que indique aceleración
         return Gdx.input.isKeyPressed(Keys.UP);
     }
 
     public float getAccelerationSpeed() {
-        // Aquí puedes implementar la lógica para determinar la velocidad de aceleración del jugador
-        // Por ejemplo, puedes retornar una velocidad constante o calcularla dinámicamente en función de las condiciones del juego
-        return 200; // Ejemplo de una velocidad constante de aceleración
+        return 200; // Velocidad constante de aceleración
     }
 }

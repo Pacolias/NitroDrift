@@ -64,8 +64,4 @@ public class Circuito {
     public void setImagen(Texture imagen) {
         this.imagen = imagen;
     }
-
-
 }
-
-

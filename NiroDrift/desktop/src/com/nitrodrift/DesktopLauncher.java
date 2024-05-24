@@ -1,9 +1,7 @@
 package com.nitrodrift;
 
-
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-
 
 // Mac: ejecutar con -XstartOnFirstThread
 public class DesktopLauncher {

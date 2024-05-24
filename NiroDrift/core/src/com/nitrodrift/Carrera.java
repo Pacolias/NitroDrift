@@ -1,12 +1,9 @@
 package com.nitrodrift;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.Array;
 
 public class Carrera {
     private Circuito circuito;
-    private Array<Vehiculo> vehículos;
     private Vehiculo vehiculoDelJugador;
     private Jugador jugador;
     private Personaje personaje;
@@ -17,7 +14,6 @@ public class Carrera {
     }
     public Carrera(Personaje p, Vehiculo c, Circuito cir) {
         this.circuito = cir;
-        vehículos = new Array<>();
         vehiculoDelJugador = c;
         jugador = new Jugador();
         this.personaje = p;
@@ -30,14 +26,6 @@ public class Carrera {
 
     public void setCircuito(Circuito circuito) {
         this.circuito = circuito;
-    }
-
-    public Array<Vehiculo> getVehículos() {
-        return vehículos;
-    }
-
-    public void setVehículos(Array<Vehiculo> vehículos) {
-        this.vehículos = vehículos;
     }
 
     public Vehiculo getVehiculoDelJugador() {
@@ -72,4 +60,3 @@ public class Carrera {
         this.camera = camera;
     }
 }
-

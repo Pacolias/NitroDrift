@@ -1,11 +1,10 @@
 package com.nitrodrift;
 import com.badlogic.gdx.graphics.*;
+
 public class Personaje {
     private static int ID;
     private String nombre;
     private Texture imagen;
-
-
 
     /**
      * Constructor de la clase
@@ -32,7 +31,6 @@ public class Personaje {
         this.imagen = new Texture(direccionImagen);
     }
 
-    //Getters and setters menos de ID que será inmutable.
     public int getID() {
         return ID;
     }

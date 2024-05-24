@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.GL20;
 
 public class EstadoSeleccionVehiculo implements Estado {
-    private tipoEstado tipo;
     private Texture[] seleccionVehiculo;
     private Texture fondo;
     private int vehiculoSeleccionadoIndex;
@@ -15,7 +14,6 @@ public class EstadoSeleccionVehiculo implements Estado {
 
     public EstadoSeleccionVehiculo(NitroDrift game) {
         this.game = game;
-        tipo = tipoEstado.SELECCIONAR_CIRCUITO;
         
         fondo = game.carrera.getPersonaje().getImagen();
         
@@ -60,7 +58,6 @@ public class EstadoSeleccionVehiculo implements Estado {
             }
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             // El jugador ha confirmado su selección, cambiar el estado a la carrera
-            //vehiculoSeleccionadoIndex = 4;
             EstadisticasVehiculo e = new EstadisticasVehiculo(10, 2, 30);
             Jugador v = new Jugador(vehiculoSeleccionadoIndex, "Nombre", "Historia", 150000, seleccionVehiculo[vehiculoSeleccionadoIndex],0, 0, 0.015f, e);
             game.carrera.setVehiculoDelJugador(v);

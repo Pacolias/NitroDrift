@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.GL20;
 
 public class EstadoSeleccionPersonaje implements Estado {
-    private tipoEstado tipo;
     private Texture[] seleccionPersonaje;
     private Texture fondo;
     private int personajeSeleccionadoIndex;
@@ -15,7 +14,6 @@ public class EstadoSeleccionPersonaje implements Estado {
 
     public EstadoSeleccionPersonaje(NitroDrift game) {
         this.game = game;
-        tipo = tipoEstado.SELECCIONAR_PERSONAJE;
 
         fondo = new Texture(Gdx.files.internal("NitroDriftFondoMorado.jpg"));
 

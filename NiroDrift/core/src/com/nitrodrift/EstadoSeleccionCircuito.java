@@ -4,10 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.GL20;
 
 public class EstadoSeleccionCircuito implements Estado{
-    private tipoEstado tipo;
     private Texture[] seleccionCircuito;
     private Texture fondo;
     private int circuitoSeleccionadoIndex;
@@ -15,7 +13,6 @@ public class EstadoSeleccionCircuito implements Estado{
 
     public EstadoSeleccionCircuito(NitroDrift game){
         this.game = game;
-        tipo = tipoEstado.SELECCIONAR_CIRCUITO;
         
         fondo = game.carrera.getPersonaje().getImagen();
 

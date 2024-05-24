@@ -1,7 +1,6 @@
 package com.nitrodrift;
 
 import com.badlogic.gdx.Gdx;
-import java.util.Random;
 
 public class EstadisticasVehiculo {
 
@@ -28,7 +27,6 @@ public class EstadisticasVehiculo {
         this.ultimoLimiteVelocidad = -1;
     }
 
-    //Getters and setters
     public float getVelocidad() {
         return velocidad;
     }

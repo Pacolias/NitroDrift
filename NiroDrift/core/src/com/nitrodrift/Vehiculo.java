@@ -1,7 +1,5 @@
 package com.nitrodrift;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -12,10 +10,8 @@ public abstract class Vehiculo {
     private String descripcion;
     private int precio;
     private EstadisticasVehiculo estadisticas;
-
     protected Texture imagen;
     protected Vector2 position;
-
     protected float scale;
 
     public Vehiculo(int id, String nom, String desc, int p, Texture texture, float startX, float startY, float scale, EstadisticasVehiculo e) {
@@ -44,32 +40,7 @@ public abstract class Vehiculo {
         imagen.dispose();
     }
 
-    // Método para obtener la posición del coche
     public Vector2 getPosition() {
         return position;
     }
-
-
-
-    /*public void evitarColisiones(Array<Coche> coches) {
-        for (Coche otroCoche : coches) {
-            if (otroCoche != this) {
-                Rectangle thisRect = new Rectangle(this.position.x, this.position.y, this.texture.getWidth() * this.scale, this.texture.getHeight() * this.scale);
-                Rectangle otroRect = new Rectangle(otroCoche.position.x, otroCoche.position.y, otroCoche.texture.getWidth() * otroCoche.scale, otroCoche.texture.getHeight() * otroCoche.scale);
-
-                if (thisRect.overlaps(otroRect)) {
-                    // Calcular la dirección del empuje
-                    float deltaX = otroCoche.position.x - this.position.x;
-                    float deltaY = otroCoche.position.y - this.position.y;
-
-                    // Aplicar el empuje ajustando las posiciones
-                    this.position.x -= deltaX * 0.1f;
-                    this.position.y -= deltaY * 0.1f;
-                    otroCoche.position.x += deltaX * 0.1f;
-                    otroCoche.position.y += deltaY * 0.1f;
-                }
-            }
-        }
-    }*/
-
 }
