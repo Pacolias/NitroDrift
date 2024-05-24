@@ -9,7 +9,7 @@ public class EstadoInicio implements  Estado{
     private Texture nitroLogo;
 
     public EstadoInicio(){
-        nitroLogo = new Texture("NitroDrift.png");
+        nitroLogo = new Texture("menuPrincipal.PNG");
     }
 
     @Override
