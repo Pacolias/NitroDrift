@@ -2,6 +2,7 @@ package com.nitrodrift;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
 public class EstadoInicio implements  Estado{
@@ -22,10 +23,11 @@ public class EstadoInicio implements  Estado{
         game.camara.update();
         game.gestorDeGraficos.setProjectionMatrix(game.camara.combined);
         game.gestorDeGraficos.begin();
-
+        
         // Limpiar la pantalla dibujando un color de fondo
         Gdx.gl.glClearColor(0, (float)0.75, 1,0); // Color negro
 
+        game.gestorDeGraficos.setColor(Color.WHITE); // Asegurarse de que el color sea blanco para el fondo
         game.gestorDeGraficos.draw(nitroLogo, 0,0);
 
         // Manejo del clic para cambiar al estado de selección de personaje

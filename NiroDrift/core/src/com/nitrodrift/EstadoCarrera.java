@@ -2,6 +2,7 @@ package com.nitrodrift;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 
 public class EstadoCarrera  implements  Estado{
     private NitroDrift game;
@@ -26,6 +27,7 @@ public class EstadoCarrera  implements  Estado{
         float newHeight = 1000; // Nuevo alto en píxeles
 
         // Dibujar la textura redimensionada
+        game.gestorDeGraficos.setColor(Color.WHITE); // Asegurarse de que el color sea blanco para el fondo
         game.gestorDeGraficos.draw(game.carrera.getCircuito().getImagen(), 0, 0, newWidth, newHeight);
 
         game.carrera.getVehiculoDelJugador().update(Gdx.graphics.getDeltaTime());
