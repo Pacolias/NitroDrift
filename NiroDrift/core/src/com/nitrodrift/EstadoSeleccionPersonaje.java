@@ -15,7 +15,7 @@ public class EstadoSeleccionPersonaje implements Estado {
     public EstadoSeleccionPersonaje(NitroDrift game) {
         this.game = game;
 
-        fondo = new Texture(Gdx.files.internal("NitroDriftFondoMorado.jpg"));
+        fondo = new Texture(Gdx.files.internal("fondoseleccion2.jpeg"));
 
         seleccionPersonaje = new Texture[8];
         seleccionPersonaje[0] = new Texture(Gdx.files.internal("personaje5.jpg"));
