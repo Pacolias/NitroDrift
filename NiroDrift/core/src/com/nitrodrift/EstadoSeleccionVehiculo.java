@@ -18,14 +18,14 @@ public class EstadoSeleccionVehiculo implements Estado {
         fondo = game.carrera.getPersonaje().getImagen();
         
         seleccionVehiculo = new Texture[8];
-        seleccionVehiculo[0] = new Texture(Gdx.files.internal("codebreaker.jpeg"));
-        seleccionVehiculo[1] = new Texture(Gdx.files.internal("sailorswrath.jpeg"));
-        seleccionVehiculo[2] = new Texture(Gdx.files.internal("albusvalor.jpeg"));
-        seleccionVehiculo[3] = new Texture(Gdx.files.internal("atranox.jpeg"));
-        seleccionVehiculo[4] = new Texture(Gdx.files.internal("capobanana.jpeg"));
-        seleccionVehiculo[5] = new Texture(Gdx.files.internal("libertybeast.jpeg"));
-        seleccionVehiculo[6] = new Texture(Gdx.files.internal("diavolorosso.jpeg"));
-        seleccionVehiculo[7] = new Texture(Gdx.files.internal("nightcrawler.jpeg"));
+        seleccionVehiculo[0] = new Texture(Gdx.files.internal("diavolorosso.jpeg"));
+        seleccionVehiculo[1] = new Texture(Gdx.files.internal("libertybeast.jpeg"));
+        seleccionVehiculo[2] = new Texture(Gdx.files.internal("nightcrawler.jpeg"));
+        seleccionVehiculo[3] = new Texture(Gdx.files.internal("capobanana.jpeg"));
+        seleccionVehiculo[4] = new Texture(Gdx.files.internal("codebreaker.jpeg"));
+        seleccionVehiculo[5] = new Texture(Gdx.files.internal("albusvalor.jpeg"));
+        seleccionVehiculo[6] = new Texture(Gdx.files.internal("atranox.jpeg"));
+        seleccionVehiculo[7] = new Texture(Gdx.files.internal("sailorswrath.jpeg"));
         vehiculoSeleccionadoIndex = 4;
     }
 
