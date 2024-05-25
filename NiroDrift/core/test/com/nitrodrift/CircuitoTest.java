@@ -1,9 +1,8 @@
-/* package com.nitrodrift;
+package com.nitrodrift;
 
 import com.badlogic.gdx.graphics.Texture;
 import org.junit.jupiter.api.Test;
-
-//import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CircuitoTest {
 
@@ -18,4 +17,4 @@ class CircuitoTest {
     @Test
     void getImagenTest() {
     }
-} */
+}
