@@ -5,6 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * Clase que implementa el estado inicial del juego, que en nuestro caso es el menú principal
+ */
 public class EstadoInicio implements  Estado{
     private Texture nitroLogo;
 
@@ -16,7 +19,7 @@ public class EstadoInicio implements  Estado{
     public void update(float delta) {
 
     }
-
+    
     @Override
     public void dibujarEstado(NitroDrift game) {
         // Redibujado de la pantalla

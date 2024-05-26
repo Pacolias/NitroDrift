@@ -4,9 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 
+/**
+ * Clase que implementa el estado del juego en el que se está jugando la carrera
+ */
 public class EstadoCarrera  implements  Estado{
     private NitroDrift game;
-
+    
     public EstadoCarrera(NitroDrift game) {
         this.game = game;
     }

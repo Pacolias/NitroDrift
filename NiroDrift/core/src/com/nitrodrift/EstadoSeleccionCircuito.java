@@ -5,6 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * Clase que implementa el estado del juego en el que el jugador debe seleccionar el circuito en el que jugar la carrera
+ */
 public class EstadoSeleccionCircuito implements Estado{
     private Texture[] seleccionCircuito;
     private Texture fondo;

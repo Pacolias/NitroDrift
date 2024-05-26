@@ -27,6 +27,10 @@ public class EstadisticasVehiculo {
         this.ultimoLimiteVelocidad = -1;
     }
 
+    /**
+     * Getter del atributo velocidad
+     * @return Número flotante que indica la velocidad que lleva el vehículo
+     */
     public float getVelocidad() {
         return velocidad;
     }
@@ -47,38 +51,73 @@ public class EstadisticasVehiculo {
 
     }
 
+    /**
+     * Getter del atributo velocidadLimite
+     * @return Número flotante que indica la velocidad límite del vehículo
+     */
     public float getVelocidadLimite() {
         return velocidadLimite;
     }
 
+    /**
+     * Setter del atributo velocidadLimite
+     * @param velocidadLimite Número flotante que indica la velocidad máxima que podrá alcanzar el vehículo
+     */
     public void setVelocidadLimite(float velocidadLimite) {
         this.velocidadLimite = velocidadLimite;
     }
 
+    /**
+     * Getter del atributo aceleracion
+     * @return Número flotante que indica la aceleración que tiene el vehículo
+     */
     public float getAcelaracion() {
         return acelaracion;
     }
 
+    /**
+     * Setter del atributo aceleracion
+     * @param acelaracion Número flotante que indica la aceleración que tendrá el vehículo
+     */
     public void setAcelaracion(float acelaracion) {
         this.acelaracion = acelaracion;
     }
 
+    /**
+     * Getter del atributo totalChoquesSoportados
+     * @return Número entero que indica la cantidad de choques que puede soportar el Vehiculo
+     */
     public int getTotalChoquesSoportados() {
         return totalChoquesSoportados;
     }
 
+    /**
+     * Setter del atributo totalChoquesSoportados
+     * @param totalChoquesSoportados Número entero que indica cuántos choques soportará el vehículo
+     */
     public void setTotalChoquesSoportados(int totalChoquesSoportados) {
         this.totalChoquesSoportados = totalChoquesSoportados;
     }
 
+    /**
+     * Getter del atributo choquesActuales 
+     * @return Número entero que indica la cantidad de choques que ha recibido el coche
+     */
     public int getChoquesActuales() {
         return choquesActuales;
     }
 
+    /**
+     * Setter del atributo choquesActuales
+     * @param choquesActuales Número entero que indica la cantidad de choques que ha recibido el coche
+     */
     public void setChoquesActuales(int choquesActuales) {
         this.choquesActuales = choquesActuales;
     }
 
+    /**
+     * Método que incrementa la cantidad de choques recibidos por el coche en uno.
+     */
     public void incrementarChoques(){
         choquesActuales++;
     }

@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * Clase que implementa el comportamiento del jugador durante la carrera. Es la que maneja el funcionamiento del coche durante la carrera
+ */
 public class Jugador extends Vehiculo {
     Texture izquierda;
     Texture derecha;

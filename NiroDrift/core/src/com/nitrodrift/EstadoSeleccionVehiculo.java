@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.GL20;
 
+/**
+ * Clase que implementa el estado del juego en el que el jugador debe seleccionar el vehículo con el que jugar la carrera
+ */
 public class EstadoSeleccionVehiculo implements Estado {
     private Texture[] seleccionVehiculo;
     private Texture fondo;
